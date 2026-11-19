@@ -13,17 +13,10 @@
 
     <div class="surface-card p-3 mb-3">
         <form method="GET" action="{{ route('wallet.transactions') }}" class="row g-2 align-items-center">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <input type="text" name="search" class="form-control form-control-sm" value="{{ request('search') }}" placeholder="Search reference or description...">
             </div>
-            <div class="col-sm-4 col-md-2">
-                <select name="type" class="form-select form-select-sm">
-                    <option value="">All Flows</option>
-                    <option value="credit" {{ request('type') === 'credit' ? 'selected' : '' }}>Credit (+)</option>
-                    <option value="debit" {{ request('type') === 'debit' ? 'selected' : '' }}>Debit (-)</option>
-                </select>
-            </div>
-            <div class="col-sm-4 col-md-2">
+            <div class="col-sm-6 col-md-3">
                 <select name="transaction_type" class="form-select form-select-sm">
                     <option value="">All Types</option>
                     <option value="deposit" {{ request('transaction_type') === 'deposit' ? 'selected' : '' }}>Deposit</option>
@@ -31,7 +24,7 @@
                     <option value="withdrawal_reversal" {{ request('transaction_type') === 'withdrawal_reversal' ? 'selected' : '' }}>Reversal</option>
                 </select>
             </div>
-            <div class="col-sm-4 col-md-2">
+            <div class="col-sm-6 col-md-2">
                 <select name="status" class="form-select form-select-sm">
                     <option value="">All Statuses</option>
                     <option value="completed" {{ request('status') === 'completed' ? 'selected' : '' }}>Completed</option>
@@ -42,7 +35,7 @@
             </div>
             <div class="col-md-2 d-flex gap-2">
                 <button type="submit" class="btn btn-primary btn-sm flex-grow-1">Filter</button>
-                @if (request()->hasAny(['search', 'type', 'transaction_type', 'status']))
+                @if (request()->hasAny(['search', 'transaction_type', 'status']))
                     <a href="{{ route('wallet.transactions') }}" class="btn btn-outline-secondary btn-sm">Reset</a>
                 @endif
             </div>
